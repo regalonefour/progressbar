@@ -83,11 +83,14 @@ function Process(action, start, tick, finish)
                     start()
                 end
                 while isDoingAction do
+		
+                    DisableControlAction(0, 200)
+						
                     Wait(1)
                     if tick ~= nil then
                         tick()
                     end
-                    if IsControlJustPressed(0, 200) and Action.canCancel then
+                    if IsDisabledControlJustPressed(0, 200) and Action.canCancel then
                         TriggerEvent("progressbar:client:cancel")
                     end
 
