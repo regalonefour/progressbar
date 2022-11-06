@@ -87,7 +87,10 @@ function Process(action, start, tick, finish)
                     if tick ~= nil then
                         tick()
                     end
-                    if IsControlJustPressed(0, 200) and Action.canCancel then
+						
+                    DisableControlAction(0, 200, true) -- Disables opening map
+		 
+                    if IsDisabledControlJustReleased(0, 200) and Action.canCancel then
                         TriggerEvent("progressbar:client:cancel")
                     end
 
